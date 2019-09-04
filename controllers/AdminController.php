@@ -81,9 +81,16 @@ class AdminController extends Controller
     public function actionAddbook()
     {
         $model = new AdminsModel();
+        $authors = $model->getAllAuthors();
+        $request = Yii::$app->request;
+        if ($request->isPost) {
+            $post = $request->post();
+            $model->storeBookInDatabase($post['author_id'], $post['book_name'], $post['book_id']);
+            $this->redirect(array('admin/index'));
+        }
         $site_variables = $model->getMainVariables();
         Yii::$app->view->title = "Admin / Add Book";
-        return $this->render('add_book.twig', ['site_variables' => $site_variables]);
+        return $this->render('add_book.twig', ['site_variables' => $site_variables, 'authors' => $authors]);
     }
     
     /**

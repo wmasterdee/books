@@ -15,26 +15,26 @@
                     <div class="box-body">
                         <div class="edit_lang_info_container">
                         </div>
-                        <form class="edit_language" data-lang="texts">
+                        <form class="edit_language" method="Post">
 
+                            <input value="" name="book_id" type="hidden" class="form-control" autocomplete="off" autocapitalize="off">    
+                            
                             <div class="form-group">
-                                <label>Name</label>
-                                <input required value="" name="author_name" type="text" class="form-control" autocomplete="off" autocapitalize="off" required>
+                                <label>Book's name</label>
+                                <input required value="" name="book_name" type="text" class="form-control" autocomplete="off" autocapitalize="off">
                             </div>
                             
                             <div class="form-group">
-                                <label>Surname</label>
-                                <input required value="" name="author_surname" type="text" class="form-control" autocomplete="off" autocapitalize="off" required>
+                                <label>Author</label>
+                                <select class="form-control" name="author_id">
+                                    {% for key,value in authors %}
+                                        <option value="{{authors[key]['id']}}">{{authors[key]['name']}} {{authors[key]['surname']}}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
-                            
-                            <div class="form-group">
-                                <label>Photo</label>
-                                <input required value="" name="author_photo" type="file" class="form-control" autocomplete="off" autocapitalize="off">
-                            </div>
-
 
                             <div class="box-footer">
-                                <button type="button" class="btn btn-primary save_author">Save</button>
+                                <button type="submit" class="btn btn-primary save_author">Save</button>
                             </div>
                         </form>
                     </div>

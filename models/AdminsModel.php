@@ -26,6 +26,11 @@ class AdminsModel extends Model
         );
     }
     
+    /*
+     * Save/update authors in database
+     * 
+     * return
+     */
     public function storeAuthorInDatabase($id, $name, $surname, $birthdate) {
         if($id != null) {
             
@@ -37,5 +42,32 @@ class AdminsModel extends Model
                 'birthdate' => $birthdate
             ])->execute();
         }
+    }
+    
+    /*
+     * Save/update book in database
+     * 
+     * return
+     */
+    public function storeBookInDatabase($author_id, $book_name, $book_id) {
+        if($book_id != null) {
+            
+        }
+        else {
+            Yii::$app->db->createCommand()->insert('books', [
+                'author_id' => $author_id,
+                'name' => $book_name
+            ])->execute();
+        }
+    }
+    
+    /*
+     * Get all authors
+     * 
+     * return array
+     */
+    public function getAllAuthors(){
+       $authors = Yii::$app->db->createCommand('SELECT * FROM `authors` ORDER BY `authors`.`added` DESC ')->queryAll(); 
+       return $authors;
     }
 }
