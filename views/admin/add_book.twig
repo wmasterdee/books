@@ -1,0 +1,46 @@
+{% extends 'main.twig' %} 
+
+{% block body %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><b>Add new book</b></h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="edit_lang_info_container">
+                        </div>
+                        <form class="edit_language" data-lang="texts">
+
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input required value="" name="author_name" type="text" class="form-control" autocomplete="off" autocapitalize="off" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Surname</label>
+                                <input required value="" name="author_surname" type="text" class="form-control" autocomplete="off" autocapitalize="off" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Photo</label>
+                                <input required value="" name="author_photo" type="file" class="form-control" autocomplete="off" autocapitalize="off">
+                            </div>
+
+
+                            <div class="box-footer">
+                                <button type="button" class="btn btn-primary save_author">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>        
+        </div>
+    </section>   
+{% endblock %}{# empty Twig template #}

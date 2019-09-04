@@ -1,0 +1,64 @@
+<div class="wrapper">
+    <header class="main-header">
+
+        <a href="{{site_url}}admin/" class="logo">
+            <span class="logo-mini"><i class="fa fa-user-circle-o"></i></span>
+            <span class="logo-lg"><i class="fa fa-user-circle-o"></i></span>
+        </a>
+
+        <nav class="navbar navbar-static-top">
+
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+              <span class="sr-only">Toggle navigation</span>
+            </a>
+        </nav>
+    </header>
+
+    <aside class="main-sidebar">
+
+        <section class="sidebar">
+
+            <ul class="sidebar-menu">
+                <li class="header">Menu</li>
+                <li>
+                    <a href="{{site_variables['site_url']}}/index.php?r=admin/index">
+                        <i class="fa fa-cog"></i> <span>Books List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{site_variables['site_url']}}/index.php?r=admin/authors">
+                        <i class="fa fa-bars"></i> <span>Authors List </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{site_variables['site_url']}}/index.php?r=admin/addauthor">
+                        <i class="fa fa-flag-o"></i> <span>Add Author</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{site_variables['site_url']}}/index.php?r=admin/addbook">
+                        <i class="fa fa-flag-o"></i> <span>Add Book</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{site_variables['site_url']}}/index.php?r=admin/logout">
+                        <i class="fa fa-sign-out"></i> <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </aside>
+
+    <div class="content-wrapper">
+
+        <section class="content-header">
+            <h1>
+                {{h1_text}}            
+            </h1>
+        </section>
+
+        {% block body %}{% endblock %}
+
+    </div>
+
+</div>
