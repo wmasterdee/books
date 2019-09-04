@@ -12,7 +12,7 @@
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
                         <table class="table no-margin main_url_list">
                             <thead>
@@ -35,7 +35,7 @@
                                         <td class="total_books">{{authors[key]['total_books']}}</td>
                                         <td class="created">{{authors[key]['added']}}</td> 
                                         <td class="controls">
-                                            <a class="control_item" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a class="control_item control_edit" data-id="{{authors[key]['id']}}" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                             <a class="control_item control_remove" data-id="{{authors[key]['id']}}" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
                                         </td> 
                                     </tr>

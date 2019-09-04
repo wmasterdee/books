@@ -59,6 +59,15 @@
             }
             return false;
         });
+        
+        booksList.find('.control_edit').unbind('click').click(function() {
+            var bookId = $(this).data('id'),
+                site_url = $('body').data('url'),
+                full_url = site_url+'/index.php?r=admin/addbook&id='+bookId;
+                
+            window.location = full_url;    
+            return false;
+        });
     };
     
     /**
@@ -83,6 +92,15 @@
                         }
                 );
             }
+            return false;
+        });
+        
+        authorsList.find('.control_edit').unbind('click').click(function() {
+            var authorsId = $(this).data('id'),
+                site_url = $('body').data('url'),
+                full_url = site_url+'/index.php?r=admin/addauthor&id='+authorsId;
+                
+            window.location = full_url;    
             return false;
         });
     };

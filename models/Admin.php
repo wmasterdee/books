@@ -34,7 +34,11 @@ class Admin extends Model
      */
     public function storeAuthorInDatabase($id, $name, $surname, $birthdate) {
         if($id != null) {
-            
+            $author = Author::findOne($id);
+            $author->name = $name;
+            $author->surname = $surname;
+            $author->birthdate = $birthdate;
+            $author->save();
         }
         else {
             $author = new Author();
@@ -52,7 +56,10 @@ class Admin extends Model
      */
     public function storeBookInDatabase($author_id, $book_name, $book_id) {
         if($book_id != null) {
-            
+            $books = Book::findOne($book_id);
+            $books->author_id = $author_id;
+            $books->name = $book_name;
+            $books->save();
         }
         else {
             $books = new Book();

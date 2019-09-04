@@ -32,7 +32,7 @@
                                         <td>{{books[key]['author']['name']}} {{books[key]['author']['surname']}}</td>
                                         <td>{{books[key]['added']}}</td> 
                                         <td>
-                                            <a class="control_item" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a class="control_item control_edit" data-id="{{books[key]['id']}}" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                             <a class="control_item control_remove" data-id="{{books[key]['id']}}" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
                                         </td> 
                                     </tr>

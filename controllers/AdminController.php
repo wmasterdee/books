@@ -8,6 +8,7 @@ use yii\web\Response;
 use app\models\Admin;
 use app\models\entities\Book;
 use app\models\entities\Author;
+use yii\helpers\ArrayHelper;
 
 class AdminController extends Controller
 {
@@ -92,9 +93,19 @@ class AdminController extends Controller
             $admin->storeAuthorInDatabase($post['author_id'], $post['author_name'], $post['author_surname'], $post['author_birthday']);
             $this->redirect(array('admin/authors'));
         }
+        $get = $request->get();
+        if(!empty($get['id'])) {
+            $title = 'Edit author';
+            $autofill = Author::findOne($get['id']);
+            $autofill = ArrayHelper::toArray($autofill);
+        }
+        else {
+            $title = 'Add new author';
+            $autofill = array('name' => '', 'id'=> '', 'surname' => '', 'birthdate' => '');
+        }
         $site_variables = $admin->getMainVariables();
         Yii::$app->view->title = "Admin / Add Author";
-        return $this->render('add_author.twig', ['site_variables' => $site_variables]);
+        return $this->render('add_author.twig', ['site_variables' => $site_variables, 'autofill' => $autofill, 'title' => $title]);
     }
     
     
@@ -113,8 +124,19 @@ class AdminController extends Controller
             $admin->storeBookInDatabase($post['author_id'], $post['book_name'], $post['book_id']);
             $this->redirect(array('admin/index'));
         }
+        $get = $request->get();
+        if(!empty($get['id'])) {
+            $title = 'Edit book';
+            $autofill = Book::findOne($get['id']);
+            $autofill = ArrayHelper::toArray($autofill);
+        }
+        else {
+            $title = 'Add new book';
+            $autofill = array('name' => '', 'id'=> '', 'author_id' => '');
+        }
+
         $site_variables = $admin->getMainVariables();
         Yii::$app->view->title = "Admin / Add Book";
-        return $this->render('add_book.twig', ['site_variables' => $site_variables, 'authors' => $authors]);
+        return $this->render('add_book.twig', ['site_variables' => $site_variables, 'authors' => $authors, 'autofill' => $autofill, 'title' => $title]);
     }
 }
