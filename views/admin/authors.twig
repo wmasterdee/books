@@ -1,5 +1,50 @@
 {% extends 'main.twig' %} 
 
 {% block body %}
-    Authors page
+    
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><b>Authors</b></h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table no-margin main_url_list">
+                            <thead>
+                                <tr class="links_navigation">
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Books</th>
+                                    <th>Added</th>
+                                    <th>Controls</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                
+                                {% for key,value in authors %}
+                                    <tr>
+                                        <td class="table_id">{{authors[key]['id']}}</td>
+                                        <td class="author_name">{{authors[key]['name']}}</td>
+                                        <td class="author_surname">{{authors[key]['surname']}}</td>
+                                        <td class="total_books">{{authors[key]['total_books']}}</td>
+                                        <td class="created">{{authors[key]['added']}}</td> 
+                                        <td class="controls"></td> 
+                                    </tr>
+                                {% endfor %}
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>        
+        </div>
+    </section>  
+    
 {% endblock %}

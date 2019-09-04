@@ -3,11 +3,9 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\AdminsModel;
+use app\models\Admin;
 
 class AdminController extends Controller
 {
@@ -20,11 +18,12 @@ class AdminController extends Controller
      * @return string
      */
     public function actionIndex()
-    {
-        $model = new AdminsModel();
-        $site_variables = $model->getMainVariables();
-        Yii::$app->view->title = "Admin / Index";
-        return $this->render('index.twig', ['site_variables' => $site_variables]);
+    {       
+        $admin = new Admin();
+        $books = $admin->getAllBooks();
+        $site_variables = $admin->getMainVariables();
+        Yii::$app->view->title = "Admin / Books";
+        return $this->render('index.twig', ['site_variables' => $site_variables, 'books' => $books]);
     }
     
     /**
@@ -34,8 +33,8 @@ class AdminController extends Controller
      */
     public function actionLogin()
     {
-        $model = new AdminsModel();
-        $site_variables = $model->getMainVariables();
+        $admin = new Admin();
+        $site_variables = $admin->getMainVariables();
         Yii::$app->view->title = "Admin / Login";
         return $this->render('login.twig', ['site_variables' => $site_variables]);
     }
@@ -47,10 +46,11 @@ class AdminController extends Controller
      */
     public function actionAuthors()
     {
-        $model = new AdminsModel();
-        $site_variables = $model->getMainVariables();
+        $admin = new Admin();
+        $authors = $admin->getAllAuthors();
+        $site_variables = $admin->getMainVariables();
         Yii::$app->view->title = "Admin / Authors";
-        return $this->render('authors.twig', ['site_variables' => $site_variables]);
+        return $this->render('authors.twig', ['site_variables' => $site_variables, 'authors' => $authors]);
     }
     
     /**
@@ -60,14 +60,14 @@ class AdminController extends Controller
      */
     public function actionAddauthor()
     {
-        $model = new AdminsModel();
+        $admin = new Admin();
         $request = Yii::$app->request;
         if ($request->isPost) {
             $post = $request->post();
-            $model->storeAuthorInDatabase($post['author_id'], $post['author_name'], $post['author_surname'], $post['author_birthday']);
+            $admin->storeAuthorInDatabase($post['author_id'], $post['author_name'], $post['author_surname'], $post['author_birthday']);
             $this->redirect(array('admin/authors'));
         }
-        $site_variables = $model->getMainVariables();
+        $site_variables = $admin->getMainVariables();
         Yii::$app->view->title = "Admin / Add Author";
         return $this->render('add_author.twig', ['site_variables' => $site_variables]);
     }
@@ -80,26 +80,16 @@ class AdminController extends Controller
      */
     public function actionAddbook()
     {
-        $model = new AdminsModel();
-        $authors = $model->getAllAuthors();
+        $admin = new Admin();
+        $authors = $admin->getAllAuthors();
         $request = Yii::$app->request;
         if ($request->isPost) {
             $post = $request->post();
-            $model->storeBookInDatabase($post['author_id'], $post['book_name'], $post['book_id']);
+            $admin->storeBookInDatabase($post['author_id'], $post['book_name'], $post['book_id']);
             $this->redirect(array('admin/index'));
         }
-        $site_variables = $model->getMainVariables();
+        $site_variables = $admin->getMainVariables();
         Yii::$app->view->title = "Admin / Add Book";
         return $this->render('add_book.twig', ['site_variables' => $site_variables, 'authors' => $authors]);
-    }
-    
-    /**
-     * Logout Action
-     *
-     * @return string
-     */
-    public function actionLogout()
-    {
-        
     }
 }

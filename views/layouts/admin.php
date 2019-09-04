@@ -3,9 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
 
@@ -27,7 +25,6 @@ AppAsset::register($this);
     <link href="<?php echo Url::base('http'); ?>/libs/dist/css/AdminLTE.min.css" rel="stylesheet">
     <link href="<?php echo Url::base('http'); ?>/libs/dist/css/skins/skin-blue.min.css" rel="stylesheet">
     <link rel="stylesheet/less" type="text/css" href="<?php echo Url::base('http'); ?>/less/styles_admin.less"/>
-    <link rel="icon" href="<?php echo Url::base('http'); ?>/images/icons/adfavicon.ico" type="image/x-icon" />
 
     <script src="<?php echo Url::base('http'); ?>/libs/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo Url::base('http'); ?>/libs/bower_components/jquery-ui/jquery-ui.min.js"></script>
