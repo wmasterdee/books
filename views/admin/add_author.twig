@@ -11,22 +11,20 @@
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
-                        <div class="edit_lang_info_container">
-                        </div>
                         <form class="edit_language" data-lang="texts" method="Post">
 
                             <input value="{{autofill['id']}}" name="author_id" type="hidden" class="form-control" autocomplete="off" autocapitalize="off">
                             
                             <div class="form-group">
                                 <label>Name</label>
-                                <input required value="{{autofill['name']}}" name="author_name" type="text" class="form-control" autocomplete="off" autocapitalize="off">
+                                <input maxlength="200" required value="{{autofill['name']}}" name="author_name" type="text" class="form-control" autocomplete="off" autocapitalize="off">
                             </div>
                             
                             <div class="form-group">
                                 <label>Surname</label>
-                                <input required value="{{autofill['surname']}}" name="author_surname" type="text" class="form-control" autocomplete="off" autocapitalize="off">
+                                <input maxlength="200" required value="{{autofill['surname']}}" name="author_surname" type="text" class="form-control" autocomplete="off" autocapitalize="off">
                             </div>
                             
                             <div class="form-group">

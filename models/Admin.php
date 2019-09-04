@@ -33,6 +33,7 @@ class Admin extends Model
      * return
      */
     public function storeAuthorInDatabase($id, $name, $surname, $birthdate) {
+        $birthdate = ($this->validateDate($birthdate)) ? $birthdate : date('Y-m-d');
         if($id != null) {
             $author = Author::findOne($id);
             $author->name = $name;
@@ -100,5 +101,16 @@ class Admin extends Model
        }
        
        return $books;
+    }
+    
+    
+    /*
+     * Validate date
+     * 
+     * return boolean
+     */
+    function validateDate($date, $format = 'Y-m-d')
+    {
+        return $date == date($format, strtotime($date));
     }
 }

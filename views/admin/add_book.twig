@@ -11,22 +11,20 @@
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
-                        <div class="edit_lang_info_container">
-                        </div>
                         <form class="edit_language" method="Post">
 
                             <input value="{{autofill['id']}}" name="book_id" type="hidden" class="form-control" autocomplete="off" autocapitalize="off">    
                             
                             <div class="form-group">
                                 <label>Book's name</label>
-                                <input required value="{{autofill['name']}}" name="book_name" type="text" class="form-control" autocomplete="off" autocapitalize="off">
+                                <input maxlength="400" required value="{{autofill['name']}}" name="book_name" type="text" class="form-control" autocomplete="off" autocapitalize="off">
                             </div>
                             
                             <div class="form-group">
                                 <label>Author</label>
-                                <select class="form-control" name="author_id">
+                                <select required class="form-control" name="author_id">
                                     {% for key,value in authors %}
                                         <option {% if autofill['author_id'] == authors[key]['id'] %}selected{% endif %} value="{{authors[key]['id']}}">{{authors[key]['name']}} {{authors[key]['surname']}}</option>
                                     {% endfor %}
