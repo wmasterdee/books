@@ -28,6 +28,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        Yii::$app->view->title = "Authors / Books list";
         Yii::$app->name = 'Authors / Books list';
         $site = new site();
         $authors = $site->getAuthorsWithBooks();

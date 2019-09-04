@@ -39,7 +39,7 @@ AppAsset::register($this);
         });
     </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini admin_page">
+<body class="hold-transition skin-blue sidebar-mini admin_page" data-url="<?php echo Url::base('http'); ?>">
 
 <?= $content ?>
 

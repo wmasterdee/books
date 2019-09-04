@@ -1,7 +1,7 @@
 {% extends 'main.twig' %} 
 
 {% block body %}
-    <section class="content">
+    <section class="content books_list">
         <div class="row">
             <div class="col-md-12">
 
@@ -26,12 +26,15 @@
                             <tbody> 
                                 
                                 {% for key,value in books %}
-                                    <tr>
+                                    <tr class="book_{{books[key]['id']}}">
                                         <td>{{books[key]['id']}}</td>
                                         <td>{{books[key]['name']}}</td>
                                         <td>{{books[key]['author']['name']}} {{books[key]['author']['surname']}}</td>
                                         <td>{{books[key]['added']}}</td> 
-                                        <td></td> 
+                                        <td>
+                                            <a class="control_item" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a class="control_item control_remove" data-id="{{books[key]['id']}}" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+                                        </td> 
                                     </tr>
                                 {% endfor %}
                                

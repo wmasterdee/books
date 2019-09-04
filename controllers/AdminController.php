@@ -6,6 +6,8 @@ use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 use app\models\Admin;
+use app\models\entities\Book;
+use app\models\entities\Author;
 
 class AdminController extends Controller
 {
@@ -27,16 +29,39 @@ class AdminController extends Controller
     }
     
     /**
-     * Displays Logins page.
+     * Remove Book.
      *
      * @return string
      */
-    public function actionLogin()
+    public function actionRemovebook()
     {
-        $admin = new Admin();
-        $site_variables = $admin->getMainVariables();
-        Yii::$app->view->title = "Admin / Login";
-        return $this->render('login.twig', ['site_variables' => $site_variables]);
+        $request = Yii::$app->request;
+        if ($request->isPost) {
+            $post = $request->post();
+            
+            $book = Book::findOne($post['id']);
+            $book->delete();
+        }
+        return null;
+    }
+    
+    /**
+     * Remove Author.
+     *
+     * @return string
+     */
+    public function actionRemoveauthors()
+    {
+        $request = Yii::$app->request;
+        if ($request->isPost) {
+            $post = $request->post();  
+            
+            $author = Author::findOne($post['id']);
+            $author->delete();
+            
+            Book::deleteAll(['author_id' => $post['id']]);
+        }
+        return null;
     }
     
     /**

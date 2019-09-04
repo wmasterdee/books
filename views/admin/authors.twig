@@ -2,7 +2,7 @@
 
 {% block body %}
     
-    <section class="content">
+    <section class="content authors_list">
         <div class="row">
             <div class="col-md-12">
 
@@ -28,13 +28,16 @@
                             <tbody> 
                                 
                                 {% for key,value in authors %}
-                                    <tr>
+                                    <tr class="author_{{authors[key]['id']}}">
                                         <td class="table_id">{{authors[key]['id']}}</td>
                                         <td class="author_name">{{authors[key]['name']}}</td>
                                         <td class="author_surname">{{authors[key]['surname']}}</td>
                                         <td class="total_books">{{authors[key]['total_books']}}</td>
                                         <td class="created">{{authors[key]['added']}}</td> 
-                                        <td class="controls"></td> 
+                                        <td class="controls">
+                                            <a class="control_item" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                            <a class="control_item control_remove" data-id="{{authors[key]['id']}}" href="#"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+                                        </td> 
                                     </tr>
                                 {% endfor %}
                                
